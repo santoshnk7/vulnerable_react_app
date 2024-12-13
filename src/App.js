@@ -6,8 +6,12 @@ import XssComplex from './pages/Xss';
 import XssAllExamples from './pages/XssAll';
 import PrototypePollution from './pages/ProtoPollution';
 import OpenRedirect from './pages/OpenRedirect';
-import Login from './pages/Login';
 import Profile from './pages/Profile';
+import LoginSession from './pages/Login';
+import Login from './pages/nosql/Login';
+import PrivateRoute from './pages/nosql/PrivateRoute';
+import ProtectedPage from './pages/nosql/ProtectedPage';
+import Register from './pages/nosql/Register';
 
 
 function App() {
@@ -21,8 +25,13 @@ function App() {
           <Route path="/xssall" element={<XssAllExamples />} />
           <Route path="/protopol" element={<PrototypePollution />} />
           <Route path="/redirect" element={<OpenRedirect />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/loginses" element={<LoginSession />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/protected" element={<PrivateRoute />}>
+          <Route path="/protected" element={<ProtectedPage />} />
+        </Route>
         </Routes>
       </div>
     </Router>

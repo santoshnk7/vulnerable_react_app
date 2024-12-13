@@ -1,70 +1,114 @@
-# Getting Started with Create React App
+# Vulnerable React.js Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains a vulnerable React.js application intentionally designed for educational and security testing purposes. The application includes common web vulnerabilities such as **NoSQL Injection**, **Cross-Site Scripting (XSS)**, **Open Redirect**, and **Session Management Issues**.
 
-## Available Scripts
+> **Disclaimer:** This project is for learning and demonstration purposes only. Do not deploy this application on public servers or use it in production environments.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## **Vulnerabilities Overview**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 1. **NoSQL Injection**
+- **Description:** The application allows malicious queries in API endpoints, enabling NoSQL injection attacks.
+- **Example Exploit:**
+  ```json
+  {
+    "username": { "$ne": null },
+    "password": { "$ne": null }
+  }
+  ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. **Cross-Site Scripting (XSS)**
+- **Description:** User input is directly rendered into the DOM without sanitization.
+- **Example Exploit:**
+  ```html
+  <script>alert('XSS Exploit');</script>
+  ```
 
-### `npm test`
+### 3. **Open Redirect**
+- **Description:** Redirect logic accepts unvalidated URLs, allowing attackers to redirect users to malicious websites.
+- **Example Exploit:**
+  ```plaintext
+  https://example.com/redirect?redirect=http://malicious.com
+  ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 4. **Session Management Issues**
+- **Description:** Sessions are managed using insecure methods such as localStorage without expiration or secure flags.
+- **Example Exploit:**
+  - Lack of token expiration.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## **Installation Instructions**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clone the Repository:**
+   ```bash
+   cd vulnerable-react-app
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
 
-### `npm run eject`
+3. **Start the Application:**
+   ```bash
+   npm start
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. **Access the Application:**
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
+4. **For nosql:**
+```bash
+   cd /backend
+   node server.js
+   ```
+## **How to Use for Security Testing**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Use common penetration testing tools like **Burp Suite**, **OWASP ZAP**, or **Postman**.
+- Perform manual tests to identify vulnerabilities.
+- Inject payloads in input fields to test for XSS, NoSQL Injection, and Open Redirects.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## **Educational Goals**
+- Understand common web application vulnerabilities.
+- Learn about secure development practices.
+- Practice using security testing tools.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## **Security Best Practices Recommendations**
 
-### Code Splitting
+1. **NoSQL Injection Prevention:**
+   - Use parameterized queries.
+   - Validate and sanitize all input.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. **XSS Prevention:**
+   - Use libraries like `DOMPurify`.
+   - Escape user-generated content.
 
-### Analyzing the Bundle Size
+3. **Open Redirect Prevention:**
+   - Validate and restrict redirect URLs.
+   - Use a whitelist of allowed domains.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+4. **Session Management Security:**
+   - Use `httpOnly` and `secure` flags for cookies.
+   - Implement token expiration and refresh mechanisms.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## **Contributions and Support**
+- Feel free to open issues or submit pull requests for improvements.
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## **License**
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+> **Important Notice:** Use this project responsibly. Do not use the code or knowledge gained from this repository for malicious activities. The authors are not responsible for any misuse of this application.
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
