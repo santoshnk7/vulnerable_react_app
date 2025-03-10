@@ -13,6 +13,8 @@ function Auth() {
     ) {
       alert('Login Successful!');
       localStorage.setItem('authToken', Config.JWT_SECRET); // Storing JWT insecurely
+      console.log('Invalid password: ', password)
+      console.log('Invalid password: ', Config.JWT_SECRET)
     } else {
       alert('Invalid Credentials');
     }

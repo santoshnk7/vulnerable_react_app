@@ -19,6 +19,7 @@ function Profile() {
       alert('Access Denied! Redirecting to Login.');
       navigate('/login');
     }
+    console.log('Secret: ', secret)
   };
 
   return (

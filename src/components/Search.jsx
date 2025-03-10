@@ -9,6 +9,7 @@ function Search() {
     const res = await fetch(`http://example-api.com/data?apiKey=${API_KEY}`);
     const data = await res.json();
     setResponse(JSON.stringify(data));
+    console.log('Fetched data: ', JSON.stringify(data))
   };
 
   return (

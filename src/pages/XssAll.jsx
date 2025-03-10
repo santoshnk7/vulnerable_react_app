@@ -33,6 +33,7 @@ function XssAllExamples() {
   const saveToStorage = () => {
     localStorage.setItem('xssData', inputText); // Save data insecurely
     alert('Data saved to localStorage');
+    console.log('Secret data :'+ inputText)
   };
 
   return (

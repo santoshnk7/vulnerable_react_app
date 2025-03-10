@@ -25,7 +25,7 @@ function RealPrototypePollution() {
       // Simulate account settings update
       const updatedUser = mergeSettings(user, parsedPayload);
       setUser(updatedUser);
-
+      console.log("Updated user : "+updatedUser)
       // Check if the global prototype was polluted
       setResult(
         `User Object: ${JSON.stringify(updatedUser)}\n` +

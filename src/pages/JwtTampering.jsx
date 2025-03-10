@@ -8,12 +8,14 @@ function JwtTampering() {
     localStorage.setItem('jwtToken', fakeToken);
     setJwtToken(fakeToken);
     alert('JWT Token Stored!');
+    console.log('Token: ', fakeToken)
   };
 
   const validateToken = () => {
     const storedToken = localStorage.getItem('jwtToken');
     if (storedToken === jwtToken) {
       alert('Token is Valid!');
+      console.log('Token: ', storedToken)
     } else {
       alert('Token is Invalid!');
     }
